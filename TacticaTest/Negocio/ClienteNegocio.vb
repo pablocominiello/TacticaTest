@@ -1,9 +1,9 @@
 Namespace Negocio
     Public Class ClienteNegocio
-        Private datos As New ClienteDatos()
+        Private datos As New ClienteProductos()
 
-        Public Function ListarClientes() As DataTable
-            Return datos.ObtenerClientes()
+        Public Function ListarProductos() As DataTable
+            Return datos.ObtenerProductos()
         End Function
     End Class
 End Namespace

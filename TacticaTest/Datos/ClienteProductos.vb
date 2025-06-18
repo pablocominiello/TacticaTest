@@ -1,9 +1,10 @@
+Imports System.Configuration
 Imports System.Data.SqlClient
 
-Public Class ClienteDatos
-    Private connectionString As String = "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=pruebademo;Integrated Security=True"
+Public Class ClienteProductos
+    Private connectionString As String = ConfigurationManager.ConnectionStrings("MiConexion").ConnectionString
 
-    Public Function ObtenerClientes() As DataTable
+    Public Function ObtenerProductos() As DataTable
         Dim dt As New DataTable()
         Using conn As New SqlConnection(connectionString)
             Dim cmd As New SqlCommand("SELECT * FROM productos", conn)
