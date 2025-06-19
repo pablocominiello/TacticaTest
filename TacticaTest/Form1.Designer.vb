@@ -1,10 +1,10 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class Form1
     Inherits System.Windows.Forms.Form
 
-    'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()>
-    Protected Overrides Sub Dispose(disposing As Boolean)
+    'Form reemplaza a Dispose para limpiar la lista de componentes.
+    <System.Diagnostics.DebuggerNonUserCode()> _
+    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
                 components.Dispose()
@@ -14,38 +14,37 @@ Partial Class Form1
         End Try
     End Sub
 
-    'Required by the Windows Form Designer
+    'Requerido por el Diseñador de Windows Forms
     Private components As System.ComponentModel.IContainer
 
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
-    'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()>
+    'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
+    'Se puede modificar usando el Diseñador de Windows Forms.  
+    'No lo modifique con el editor de código.
+    <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        DataGridView1 = New DataGridView()
-        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
+        btnVerProductos = New Button()
         SuspendLayout()
         ' 
-        ' DataGridView1
+        ' btnVerProductos
         ' 
-        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(71, 54)
-        DataGridView1.Name = "DataGridView1"
-        DataGridView1.Size = New Size(586, 300)
-        DataGridView1.TabIndex = 0
+        btnVerProductos.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
+        btnVerProductos.Location = New Point(62, 192)
+        btnVerProductos.Name = "btnVerProductos"
+        btnVerProductos.Size = New Size(175, 66)
+        btnVerProductos.TabIndex = 0
+        btnVerProductos.Text = "ver productos"
+        btnVerProductos.UseVisualStyleBackColor = True
         ' 
         ' Form1
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
-        Controls.Add(DataGridView1)
+        Controls.Add(btnVerProductos)
         Name = "Form1"
-        Text = "Form1"
-        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
+        Text = "TACTICA DEMO"
         ResumeLayout(False)
     End Sub
 
-    Friend WithEvents DataGridView1 As DataGridView
-
+    Friend WithEvents btnVerProductos As Button
 End Class
