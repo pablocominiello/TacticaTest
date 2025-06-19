@@ -1,4 +1,5 @@
 ﻿Public Class frmClientes
+    Private Const PromptClienteliminar As String = "Esta seguro que desea eliminar el cliente ?"
     Private Negocio As New Negocio.NegocioParametros()
     Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
         Me.Close()
@@ -23,7 +24,7 @@
             Dim id As Integer
             If Integer.TryParse(lblID.Text, id) Then
                 Negocio.ModificacionCliente(id, txtCliente.Text, txtCorreo.Text, txtTelefono.Text)
-                MessageBox.Show("Cliente modificado correctamente.")
+                MessageBox.Show("Cliente modificado correctamente.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 MostrarClientes()
             Else
                 MessageBox.Show("ID no válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -41,7 +42,6 @@
             txtCliente.Text = If(valorCliente IsNot Nothing, valorCliente.ToString(), "")
             txtCorreo.Text = If(valorCorreo IsNot Nothing, valorCorreo.ToString(), "")
             txtTelefono.Text = If(valorTelefono IsNot Nothing, valorTelefono.ToString(), "")
-
         Else
             lblID.Text = ""
         End If
@@ -66,4 +66,22 @@
         End If
         Return True
     End Function
+
+    Private Sub btnClienteEliminar_Click(sender As Object, e As EventArgs) Handles btnClienteEliminar.Click
+        Dim msgBoxResult = MsgBox(PromptClienteliminar, MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation)
+        If msgBoxResult = vbOK Then
+            If Not String.IsNullOrWhiteSpace(lblID.Text) Then
+                Dim id As Integer
+                If Integer.TryParse(lblID.Text, id) Then
+                    Negocio.EliminarCliente(id)
+                    MessageBox.Show("Cliente eliminado correctamente.", "Atencion!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    MostrarClientes()
+                Else
+                    MessageBox.Show("ID no válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
+            Else
+                MessageBox.Show("Seleccione un cliente para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        End If
+    End Sub
 End Class

@@ -33,6 +33,7 @@ Partial Class frmClientes
         Label1 = New Label()
         txtCliente = New TextBox()
         Panel1 = New Panel()
+        btnClienteEliminar = New Button()
         lblID = New Label()
         btnClienteModificar = New Button()
         ErrorProvider1 = New ErrorProvider(components)
@@ -77,7 +78,7 @@ Partial Class frmClientes
         ' 
         Label3.AutoSize = True
         Label3.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
-        Label3.Location = New Point(26, 134)
+        Label3.Location = New Point(14, 134)
         Label3.Name = "Label3"
         Label3.Size = New Size(44, 15)
         Label3.TabIndex = 15
@@ -85,18 +86,18 @@ Partial Class frmClientes
         ' 
         ' txtCorreo
         ' 
-        txtCorreo.Location = New Point(129, 131)
+        txtCorreo.Location = New Point(81, 131)
         txtCorreo.Margin = New Padding(3, 2, 3, 2)
         txtCorreo.MaxLength = 250
         txtCorreo.Name = "txtCorreo"
-        txtCorreo.Size = New Size(110, 23)
+        txtCorreo.Size = New Size(388, 23)
         txtCorreo.TabIndex = 12
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Font = New Font("Segoe UI", 9.0F, FontStyle.Bold)
-        Label2.Location = New Point(26, 85)
+        Label2.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
+        Label2.Location = New Point(14, 85)
         Label2.Name = "Label2"
         Label2.Size = New Size(56, 15)
         Label2.TabIndex = 14
@@ -104,18 +105,18 @@ Partial Class frmClientes
         ' 
         ' txtTelefono
         ' 
-        txtTelefono.Location = New Point(129, 85)
+        txtTelefono.Location = New Point(81, 85)
         txtTelefono.Margin = New Padding(3, 2, 3, 2)
         txtTelefono.MaxLength = 250
         txtTelefono.Name = "txtTelefono"
-        txtTelefono.Size = New Size(110, 23)
+        txtTelefono.Size = New Size(388, 23)
         txtTelefono.TabIndex = 11
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Font = New Font("Segoe UI", 9.0F, FontStyle.Bold)
-        Label1.Location = New Point(26, 43)
+        Label1.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
+        Label1.Location = New Point(14, 43)
         Label1.Name = "Label1"
         Label1.Size = New Size(45, 15)
         Label1.TabIndex = 13
@@ -123,15 +124,16 @@ Partial Class frmClientes
         ' 
         ' txtCliente
         ' 
-        txtCliente.Location = New Point(129, 40)
+        txtCliente.Location = New Point(81, 40)
         txtCliente.Margin = New Padding(3, 2, 3, 2)
         txtCliente.MaxLength = 250
         txtCliente.Name = "txtCliente"
-        txtCliente.Size = New Size(110, 23)
+        txtCliente.Size = New Size(388, 23)
         txtCliente.TabIndex = 10
         ' 
         ' Panel1
         ' 
+        Panel1.Controls.Add(btnClienteEliminar)
         Panel1.Controls.Add(lblID)
         Panel1.Controls.Add(btnClienteModificar)
         Panel1.Controls.Add(txtCliente)
@@ -142,14 +144,25 @@ Partial Class frmClientes
         Panel1.Controls.Add(Label2)
         Panel1.Location = New Point(16, 381)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(286, 219)
+        Panel1.Size = New Size(484, 219)
         Panel1.TabIndex = 16
+        ' 
+        ' btnClienteEliminar
+        ' 
+        btnClienteEliminar.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
+        btnClienteEliminar.Location = New Point(273, 172)
+        btnClienteEliminar.Margin = New Padding(3, 2, 3, 2)
+        btnClienteEliminar.Name = "btnClienteEliminar"
+        btnClienteEliminar.Size = New Size(130, 36)
+        btnClienteEliminar.TabIndex = 19
+        btnClienteEliminar.Text = "Eliminar Clente"
+        btnClienteEliminar.UseVisualStyleBackColor = True
         ' 
         ' lblID
         ' 
         lblID.AutoSize = True
-        lblID.Font = New Font("Segoe UI", 9.0F, FontStyle.Bold)
-        lblID.Location = New Point(26, 14)
+        lblID.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
+        lblID.Location = New Point(14, 14)
         lblID.Name = "lblID"
         lblID.Size = New Size(20, 15)
         lblID.TabIndex = 18
@@ -157,7 +170,7 @@ Partial Class frmClientes
         ' 
         ' btnClienteModificar
         ' 
-        btnClienteModificar.Font = New Font("Segoe UI", 9.0F, FontStyle.Bold)
+        btnClienteModificar.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
         btnClienteModificar.Location = New Point(63, 172)
         btnClienteModificar.Margin = New Padding(3, 2, 3, 2)
         btnClienteModificar.Name = "btnClienteModificar"
@@ -172,7 +185,7 @@ Partial Class frmClientes
         ' 
         ' frmClientes
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(648, 616)
         Controls.Add(Panel1)
@@ -201,4 +214,5 @@ Partial Class frmClientes
     Friend WithEvents btnClienteModificar As Button
     Friend WithEvents ErrorProvider1 As ErrorProvider
     Friend WithEvents lblID As Label
+    Friend WithEvents btnClienteEliminar As Button
 End Class

@@ -92,10 +92,10 @@ Partial Class frmClientesAgregar
         ' btnVolver
         ' 
         btnVolver.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
-        btnVolver.Location = New Point(165, 175)
+        btnVolver.Location = New Point(170, 168)
         btnVolver.Margin = New Padding(3, 2, 3, 2)
         btnVolver.Name = "btnVolver"
-        btnVolver.Size = New Size(107, 25)
+        btnVolver.Size = New Size(113, 30)
         btnVolver.TabIndex = 5
         btnVolver.Text = "Cerrar"
         btnVolver.UseVisualStyleBackColor = True
@@ -103,10 +103,10 @@ Partial Class frmClientesAgregar
         ' btnAgregarCliente
         ' 
         btnAgregarCliente.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
-        btnAgregarCliente.Location = New Point(30, 175)
+        btnAgregarCliente.Location = New Point(25, 168)
         btnAgregarCliente.Margin = New Padding(3, 2, 3, 2)
         btnAgregarCliente.Name = "btnAgregarCliente"
-        btnAgregarCliente.Size = New Size(107, 25)
+        btnAgregarCliente.Size = New Size(113, 30)
         btnAgregarCliente.TabIndex = 4
         btnAgregarCliente.Text = "Agregar Cliente"
         btnAgregarCliente.UseVisualStyleBackColor = True

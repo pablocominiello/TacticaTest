@@ -67,6 +67,7 @@ Partial Class frmProductoAgregar
         fltPrecio.DecimalPlaces = 2
         fltPrecio.Location = New Point(128, 66)
         fltPrecio.Margin = New Padding(3, 2, 3, 2)
+        fltPrecio.Maximum = New Decimal(New Integer() {9000000, 0, 0, 0})
         fltPrecio.Name = "fltPrecio"
         fltPrecio.Size = New Size(110, 23)
         fltPrecio.TabIndex = 1
@@ -93,20 +94,20 @@ Partial Class frmProductoAgregar
         ' 
         ' btnProductoAgregar
         ' 
-        btnProductoAgregar.Location = New Point(32, 163)
+        btnProductoAgregar.Location = New Point(38, 158)
         btnProductoAgregar.Margin = New Padding(3, 2, 3, 2)
         btnProductoAgregar.Name = "btnProductoAgregar"
-        btnProductoAgregar.Size = New Size(82, 22)
+        btnProductoAgregar.Size = New Size(96, 25)
         btnProductoAgregar.TabIndex = 3
         btnProductoAgregar.Text = "Agregar"
         btnProductoAgregar.UseVisualStyleBackColor = True
         ' 
         ' btnCancelar
         ' 
-        btnCancelar.Location = New Point(146, 163)
+        btnCancelar.Location = New Point(169, 158)
         btnCancelar.Margin = New Padding(3, 2, 3, 2)
         btnCancelar.Name = "btnCancelar"
-        btnCancelar.Size = New Size(82, 22)
+        btnCancelar.Size = New Size(96, 25)
         btnCancelar.TabIndex = 4
         btnCancelar.Text = "Cancelar"
         btnCancelar.UseVisualStyleBackColor = True

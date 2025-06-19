@@ -9,7 +9,7 @@
     Private Sub btnProductoAgregar_Click(sender As Object, e As EventArgs) Handles btnProductoAgregar.Click
         If ValidarCampos() Then
             negocio.AltaProducto(txtNombre.Text, fltPrecio.Value, txtCategoria.Text)
-            MessageBox.Show("Producto agregado correctamente.")
+            MessageBox.Show("Producto agregado correctamente.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.Close()
         End If
     End Sub

@@ -37,4 +37,12 @@ Friend Class Clientes
         End Using
     End Function
 
+    Public Function EliminarCliente(id As Integer) As Integer
+        Using conn As New SqlConnection(connectionString)
+            Dim cmd As New SqlCommand("DELETE FROM clientes WHERE id = @id", conn)
+            cmd.Parameters.AddWithValue("@id", id)
+            conn.Open()
+            Return cmd.ExecuteNonQuery()
+        End Using
+    End Function
 End Class
