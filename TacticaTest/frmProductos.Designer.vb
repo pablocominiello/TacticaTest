@@ -33,14 +33,16 @@ Partial Class frmProductos
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridView1.Location = New Point(18, 10)
         DataGridView1.Name = "DataGridView1"
+        DataGridView1.ReadOnly = True
         DataGridView1.RowHeadersWidth = 51
-        DataGridView1.Size = New Size(757, 217)
+        DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        DataGridView1.Size = New Size(757, 362)
         DataGridView1.TabIndex = 0
         ' 
         ' btnAgregarProducto
         ' 
         btnAgregarProducto.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
-        btnAgregarProducto.Location = New Point(10, 266)
+        btnAgregarProducto.Location = New Point(18, 389)
         btnAgregarProducto.Margin = New Padding(3, 2, 3, 2)
         btnAgregarProducto.Name = "btnAgregarProducto"
         btnAgregarProducto.Size = New Size(178, 50)
@@ -51,7 +53,7 @@ Partial Class frmProductos
         ' btnVolver
         ' 
         btnVolver.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
-        btnVolver.Location = New Point(597, 266)
+        btnVolver.Location = New Point(587, 389)
         btnVolver.Margin = New Padding(3, 2, 3, 2)
         btnVolver.Name = "btnVolver"
         btnVolver.Size = New Size(178, 50)

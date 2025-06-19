@@ -23,28 +23,44 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         btnVerProductos = New Button()
+        btnClientes = New Button()
         SuspendLayout()
         ' 
         ' btnVerProductos
         ' 
         btnVerProductos.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
-        btnVerProductos.Location = New Point(62, 192)
+        btnVerProductos.Location = New Point(359, 144)
+        btnVerProductos.Margin = New Padding(3, 2, 3, 2)
         btnVerProductos.Name = "btnVerProductos"
-        btnVerProductos.Size = New Size(175, 66)
+        btnVerProductos.Size = New Size(153, 50)
         btnVerProductos.TabIndex = 0
         btnVerProductos.Text = "ver productos"
         btnVerProductos.UseVisualStyleBackColor = True
         ' 
+        ' btnClientes
+        ' 
+        btnClientes.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
+        btnClientes.Location = New Point(35, 144)
+        btnClientes.Margin = New Padding(3, 2, 3, 2)
+        btnClientes.Name = "btnClientes"
+        btnClientes.Size = New Size(153, 50)
+        btnClientes.TabIndex = 1
+        btnClientes.Text = "ver clientes"
+        btnClientes.UseVisualStyleBackColor = True
+        ' 
         ' Form1
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(800, 450)
+        ClientSize = New Size(700, 338)
+        Controls.Add(btnClientes)
         Controls.Add(btnVerProductos)
+        Margin = New Padding(3, 2, 3, 2)
         Name = "Form1"
         Text = "TACTICA DEMO"
         ResumeLayout(False)
     End Sub
 
     Friend WithEvents btnVerProductos As Button
+    Friend WithEvents btnClientes As Button
 End Class

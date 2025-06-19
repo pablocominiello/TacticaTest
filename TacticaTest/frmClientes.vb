@@ -1,0 +1,69 @@
+﻿Public Class frmClientes
+    Private Negocio As New Negocio.NegocioParametros()
+    Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
+        Me.Close()
+    End Sub
+
+    Private Sub btnAgregarCliente_Click(sender As Object, e As EventArgs) Handles btnAgregarCliente.Click
+        Dim frmClientesAgregar As New frmClientesAgregar()
+        frmClientesAgregar.ShowDialog()
+        MostrarClientes()
+    End Sub
+
+    Private Sub frmClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        MostrarClientes()
+    End Sub
+
+    Public Sub MostrarClientes()
+        DataGridClientes.DataSource = Negocio.ListarClientes()
+    End Sub
+
+    Private Sub btnClienteModificar_Click(sender As Object, e As EventArgs) Handles btnClienteModificar.Click
+        If ValidarCampos() Then
+            Dim id As Integer
+            If Integer.TryParse(lblID.Text, id) Then
+                Negocio.ModificacionCliente(id, txtCliente.Text, txtCorreo.Text, txtTelefono.Text)
+                MessageBox.Show("Cliente modificado correctamente.")
+                MostrarClientes()
+            Else
+                MessageBox.Show("ID no válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        End If
+    End Sub
+    Private Sub DataGridClientes_SelectionChanged(sender As Object, e As EventArgs) Handles DataGridClientes.SelectionChanged
+        If DataGridClientes.CurrentRow IsNot Nothing AndAlso DataGridClientes.CurrentRow.Index >= 0 Then
+            Dim valorID As Object = DataGridClientes.CurrentRow.Cells(0).Value
+            Dim valorCliente As Object = DataGridClientes.CurrentRow.Cells(1).Value
+            Dim valorTelefono As Object = DataGridClientes.CurrentRow.Cells(2).Value
+            Dim valorCorreo As Object = DataGridClientes.CurrentRow.Cells(3).Value
+
+            lblID.Text = If(valorID IsNot Nothing, valorID.ToString(), "")
+            txtCliente.Text = If(valorCliente IsNot Nothing, valorCliente.ToString(), "")
+            txtCorreo.Text = If(valorCorreo IsNot Nothing, valorCorreo.ToString(), "")
+            txtTelefono.Text = If(valorTelefono IsNot Nothing, valorTelefono.ToString(), "")
+
+        Else
+            lblID.Text = ""
+        End If
+    End Sub
+
+    Private Sub DataGridClientes_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridClientes.CellContentClick
+
+    End Sub
+
+    Private Function ValidarCampos() As Boolean
+        If String.IsNullOrWhiteSpace(txtCliente.Text) Then
+            MessageBox.Show("El nombre es obligatorio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End If
+        If String.IsNullOrWhiteSpace(txtCorreo.Text) OrElse Not txtCorreo.Text.Contains("@") Then
+            MessageBox.Show("El email es obligatorio y debe ser válido(@).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End If
+        If String.IsNullOrWhiteSpace(txtTelefono.Text) Then
+            MessageBox.Show("El teléfono es obligatorio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End If
+        Return True
+    End Function
+End Class

@@ -22,56 +22,62 @@ Partial Class frmProductoAgregar
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        components = New ComponentModel.Container()
         txtNombre = New TextBox()
         txtCategoria = New TextBox()
         Label1 = New Label()
         fltPrecio = New NumericUpDown()
         Label2 = New Label()
         Label3 = New Label()
-        btnAgregar = New Button()
+        btnProductoAgregar = New Button()
         btnCancelar = New Button()
+        ErrorProvider1 = New ErrorProvider(components)
         CType(fltPrecio, ComponentModel.ISupportInitialize).BeginInit()
+        CType(ErrorProvider1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' txtNombre
         ' 
-        txtNombre.Location = New Point(29, 39)
+        txtNombre.Location = New Point(128, 25)
+        txtNombre.Margin = New Padding(3, 2, 3, 2)
         txtNombre.Name = "txtNombre"
-        txtNombre.Size = New Size(125, 27)
+        txtNombre.Size = New Size(110, 23)
         txtNombre.TabIndex = 0
         ' 
         ' txtCategoria
         ' 
-        txtCategoria.Location = New Point(176, 138)
+        txtCategoria.Location = New Point(128, 109)
+        txtCategoria.Margin = New Padding(3, 2, 3, 2)
         txtCategoria.Name = "txtCategoria"
-        txtCategoria.Size = New Size(125, 27)
-        txtCategoria.TabIndex = 1
+        txtCategoria.Size = New Size(110, 23)
+        txtCategoria.TabIndex = 2
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
         Label1.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
-        Label1.Location = New Point(33, 9)
+        Label1.Location = New Point(25, 28)
         Label1.Name = "Label1"
-        Label1.Size = New Size(67, 20)
+        Label1.Size = New Size(53, 15)
         Label1.TabIndex = 3
         Label1.Text = "Nombre"
         ' 
         ' fltPrecio
         ' 
         fltPrecio.DecimalPlaces = 2
-        fltPrecio.Location = New Point(176, 98)
+        fltPrecio.Location = New Point(128, 66)
+        fltPrecio.Margin = New Padding(3, 2, 3, 2)
         fltPrecio.Name = "fltPrecio"
-        fltPrecio.Size = New Size(150, 27)
-        fltPrecio.TabIndex = 4
+        fltPrecio.Size = New Size(110, 23)
+        fltPrecio.TabIndex = 1
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
         Label2.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
-        Label2.Location = New Point(29, 98)
+        Label2.Location = New Point(25, 74)
         Label2.Name = "Label2"
-        Label2.Size = New Size(52, 20)
+        Label2.Size = New Size(42, 15)
         Label2.TabIndex = 5
         Label2.Text = "Precio"
         ' 
@@ -79,46 +85,54 @@ Partial Class frmProductoAgregar
         ' 
         Label3.AutoSize = True
         Label3.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
-        Label3.Location = New Point(33, 138)
+        Label3.Location = New Point(25, 112)
         Label3.Name = "Label3"
-        Label3.Size = New Size(76, 20)
+        Label3.Size = New Size(60, 15)
         Label3.TabIndex = 6
         Label3.Text = "Categoria"
         ' 
-        ' btnAgregar
+        ' btnProductoAgregar
         ' 
-        btnAgregar.Location = New Point(37, 217)
-        btnAgregar.Name = "btnAgregar"
-        btnAgregar.Size = New Size(94, 29)
-        btnAgregar.TabIndex = 7
-        btnAgregar.Text = "Agregar"
-        btnAgregar.UseVisualStyleBackColor = True
+        btnProductoAgregar.Location = New Point(32, 163)
+        btnProductoAgregar.Margin = New Padding(3, 2, 3, 2)
+        btnProductoAgregar.Name = "btnProductoAgregar"
+        btnProductoAgregar.Size = New Size(82, 22)
+        btnProductoAgregar.TabIndex = 3
+        btnProductoAgregar.Text = "Agregar"
+        btnProductoAgregar.UseVisualStyleBackColor = True
         ' 
         ' btnCancelar
         ' 
-        btnCancelar.Location = New Point(167, 217)
+        btnCancelar.Location = New Point(146, 163)
+        btnCancelar.Margin = New Padding(3, 2, 3, 2)
         btnCancelar.Name = "btnCancelar"
-        btnCancelar.Size = New Size(94, 29)
-        btnCancelar.TabIndex = 8
+        btnCancelar.Size = New Size(82, 22)
+        btnCancelar.TabIndex = 4
         btnCancelar.Text = "Cancelar"
         btnCancelar.UseVisualStyleBackColor = True
         ' 
+        ' ErrorProvider1
+        ' 
+        ErrorProvider1.ContainerControl = Me
+        ' 
         ' frmProductoAgregar
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(353, 265)
+        ClientSize = New Size(309, 199)
         Controls.Add(btnCancelar)
-        Controls.Add(btnAgregar)
+        Controls.Add(btnProductoAgregar)
         Controls.Add(Label3)
         Controls.Add(Label2)
         Controls.Add(fltPrecio)
         Controls.Add(Label1)
         Controls.Add(txtCategoria)
         Controls.Add(txtNombre)
+        Margin = New Padding(3, 2, 3, 2)
         Name = "frmProductoAgregar"
         Text = "Agregar Producto"
         CType(fltPrecio, ComponentModel.ISupportInitialize).EndInit()
+        CType(ErrorProvider1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -129,6 +143,7 @@ Partial Class frmProductoAgregar
     Friend WithEvents fltPrecio As NumericUpDown
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents btnAgregar As Button
+    Friend WithEvents btnProductoAgregar As Button
     Friend WithEvents btnCancelar As Button
+    Friend WithEvents ErrorProvider1 As ErrorProvider
 End Class
