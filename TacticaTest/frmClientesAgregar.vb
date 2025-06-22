@@ -4,7 +4,7 @@
     Private Sub btnAgregarCliente_Click(sender As Object, e As EventArgs) Handles btnAgregarCliente.Click
         If ValidarCampos() Then
             negocio.AltaCliente(txtCliente.Text, txtCorreo.Text, txtTelefono.Text)
-            MessageBox.Show("Producto agregado correctamente.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Producto agregado correctamente.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Me.Close()
         End If
     End Sub

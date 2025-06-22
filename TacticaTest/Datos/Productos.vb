@@ -45,4 +45,38 @@ Friend Class Productos
             Return cmd.ExecuteNonQuery()
         End Using
     End Function
+
+    Public Function ListarProductosFiltrando(nombre As String, precioMin As Decimal?, precioMax As Decimal?, categoria As String) As DataTable
+        Dim dt As New DataTable()
+        Dim query As String = "SELECT * FROM productos WHERE 1=1"
+        Dim parametros As New List(Of SqlParameter)
+
+        If Not String.IsNullOrWhiteSpace(nombre) Then
+            query &= " AND nombre LIKE @nombre"
+            parametros.Add(New SqlParameter("@nombre", "%" & nombre & "%"))
+        End If
+
+        If precioMin.HasValue Then
+            query &= " AND precio >= @precioMin"
+            parametros.Add(New SqlParameter("@precioMin", precioMin.Value))
+        End If
+
+        If precioMax.HasValue And precioMax > 0 Then
+            query &= " AND precio <= @precioMax"
+            parametros.Add(New SqlParameter("@precioMax", precioMax.Value))
+        End If
+
+        If Not String.IsNullOrWhiteSpace(categoria) Then
+            query &= " AND categoria LIKE @categoria"
+            parametros.Add(New SqlParameter("@categoria", "%" & categoria & "%"))
+        End If
+
+        Using conn As New SqlConnection(connectionString)
+            Dim cmd As New SqlCommand(query, conn)
+            cmd.Parameters.AddRange(parametros.ToArray())
+            conn.Open()
+            dt.Load(cmd.ExecuteReader())
+        End Using
+        Return dt
+    End Function
 End Class

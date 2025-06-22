@@ -58,7 +58,7 @@
             Dim id As Integer
             If Integer.TryParse(lblID.Text, id) Then
                 negocio.ModificacionProducto(id, txtNombre.Text, fltPrecio.Value, txtCategoria.Text)
-                MessageBox.Show("Producto modificado correctamente.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("Producto modificado correctamente.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 ProductosCargar()
             Else
                 MessageBox.Show("ID no válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -78,5 +78,18 @@
                 MessageBox.Show("ID no válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         End If
+    End Sub
+
+    Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
+        BuscarProductos()
+    End Sub
+
+    Private Sub BuscarProductos()
+        Dim nombre As String = txtFiltroNombre.Text.Trim()
+        Dim categoria As String = txtFiltroCategoria.Text.Trim()
+        Dim precioMin As Decimal? = If(numPrecioMinimo.Value > 0, numPrecioMinimo.Value, Nothing)
+        Dim precioMax As Decimal? = If(numPrecioMaximo.Value > 0, numPrecioMaximo.Value, Nothing)
+
+        dataGridProductos.DataSource = negocio.ListarProductosFiltrando(nombre, precioMin, precioMax, categoria)
     End Sub
 End Class

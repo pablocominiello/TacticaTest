@@ -15,8 +15,13 @@
         MostrarClientes()
     End Sub
 
-    Public Sub MostrarClientes()
-        DataGridClientes.DataSource = Negocio.ListarClientes()
+    Private Sub MostrarClientes()
+        'DataGridClientes.DataSource = Negocio.ListarClientes()
+        DataGridClientes.DataSource = Negocio.ListarClientesFiltrado(
+            txtClienteFiltrar.Text,
+            txtTelefonoFiltrar.Text,
+            txtCorreoFiltrar.Text
+        )
     End Sub
 
     Private Sub btnClienteModificar_Click(sender As Object, e As EventArgs) Handles btnClienteModificar.Click
@@ -24,7 +29,7 @@
             Dim id As Integer
             If Integer.TryParse(lblID.Text, id) Then
                 Negocio.ModificacionCliente(id, txtCliente.Text, txtCorreo.Text, txtTelefono.Text)
-                MessageBox.Show("Cliente modificado correctamente.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("Cliente modificado correctamente.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 MostrarClientes()
             Else
                 MessageBox.Show("ID no válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -83,5 +88,9 @@
                 MessageBox.Show("Seleccione un cliente para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         End If
+    End Sub
+
+    Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
+        MostrarClientes()
     End Sub
 End Class
