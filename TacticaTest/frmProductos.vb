@@ -1,5 +1,5 @@
 ﻿Public Class frmProductos
-    Private negocio As New Negocio.NegocioParametros()
+    Private negocio As New NegocioParametros.Parametros()
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ProductosCargar()

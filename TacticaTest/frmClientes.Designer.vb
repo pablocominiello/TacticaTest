@@ -48,7 +48,6 @@ Partial Class frmClientes
         txtClienteFiltrar = New TextBox()
         Label4 = New Label()
         Panel3 = New Panel()
-        btnClienteVentas = New Button()
         CType(DataGridClientes, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
         CType(ErrorProvider1, ComponentModel.ISupportInitialize).BeginInit()
@@ -168,7 +167,7 @@ Partial Class frmClientes
         ' btnClienteVenta
         ' 
         btnClienteVenta.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
-        btnClienteVenta.Location = New Point(174, 168)
+        btnClienteVenta.Location = New Point(247, 168)
         btnClienteVenta.Margin = New Padding(3, 2, 3, 2)
         btnClienteVenta.Name = "btnClienteVenta"
         btnClienteVenta.Size = New Size(129, 30)
@@ -179,7 +178,7 @@ Partial Class frmClientes
         ' btnClienteEliminar
         ' 
         btnClienteEliminar.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
-        btnClienteEliminar.Location = New Point(346, 168)
+        btnClienteEliminar.Location = New Point(493, 168)
         btnClienteEliminar.Margin = New Padding(3, 2, 3, 2)
         btnClienteEliminar.Name = "btnClienteEliminar"
         btnClienteEliminar.Size = New Size(123, 30)
@@ -311,24 +310,12 @@ Partial Class frmClientes
         ' Panel3
         ' 
         Panel3.BorderStyle = BorderStyle.FixedSingle
-        Panel3.Controls.Add(btnClienteVentas)
         Panel3.Controls.Add(btnAgregarCliente)
         Panel3.Controls.Add(btnVolver)
         Panel3.Location = New Point(692, 453)
         Panel3.Name = "Panel3"
         Panel3.Size = New Size(162, 219)
         Panel3.TabIndex = 19
-        ' 
-        ' btnClienteVentas
-        ' 
-        btnClienteVentas.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
-        btnClienteVentas.Location = New Point(11, 43)
-        btnClienteVentas.Margin = New Padding(3, 2, 3, 2)
-        btnClienteVentas.Name = "btnClienteVentas"
-        btnClienteVentas.Size = New Size(129, 30)
-        btnClienteVentas.TabIndex = 5
-        btnClienteVentas.Text = "Generar Venta"
-        btnClienteVentas.UseVisualStyleBackColor = True
         ' 
         ' frmClientes
         ' 
@@ -375,5 +362,4 @@ Partial Class frmClientes
     Friend WithEvents txtCorreoFiltrar As TextBox
     Friend WithEvents Panel3 As Panel
     Friend WithEvents btnClienteVenta As Button
-    Friend WithEvents btnClienteVentas As Button
 End Class

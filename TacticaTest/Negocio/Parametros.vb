@@ -1,5 +1,5 @@
-Namespace Negocio
-    Public Class NegocioParametros
+Namespace NegocioParametros
+    Public Class Parametros
         Private productos As New Productos()
         Private clientes As New Clientes()
 

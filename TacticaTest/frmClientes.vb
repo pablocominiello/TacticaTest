@@ -1,6 +1,7 @@
 ﻿Public Class frmClientes
     Private Const PromptClienteliminar As String = "Esta seguro que desea eliminar el cliente ?"
-    Private Negocio As New Negocio.NegocioParametros()
+    Private Negocio As New NegocioParametros.Parametros()
+
     Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
         Me.Close()
     End Sub
@@ -92,5 +93,18 @@
 
     Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
         MostrarClientes()
+    End Sub
+
+    Private Sub btnClienteVentas_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub btnClienteVenta_Click(sender As Object, e As EventArgs) Handles btnClienteVenta.Click
+
+        With frmClientesVentas
+            .IdClienteSet(Integer.Parse(lblID.Text))
+            .ClienteSet(txtCliente.Text)
+            .ShowDialog()
+        End With
     End Sub
 End Class

@@ -62,6 +62,7 @@ Partial Class frmProductos
         dataGridProductos.AllowUserToDeleteRows = False
         dataGridProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         dataGridProductos.Location = New Point(10, 143)
+        dataGridProductos.MultiSelect = False
         dataGridProductos.Name = "dataGridProductos"
         dataGridProductos.ReadOnly = True
         dataGridProductos.RowHeadersWidth = 51

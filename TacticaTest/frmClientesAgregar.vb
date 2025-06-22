@@ -1,5 +1,5 @@
 ﻿Public Class frmClientesAgregar
-    Private negocio As New Negocio.NegocioParametros()
+    Private negocio As New NegocioParametros.Parametros()
 
     Private Sub btnAgregarCliente_Click(sender As Object, e As EventArgs) Handles btnAgregarCliente.Click
         If ValidarCampos() Then
