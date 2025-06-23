@@ -39,4 +39,43 @@ Friend Class Ventas
 
         Return idVenta
     End Function
+
+    Public Function VentasConsultarCliente(idCliente As Integer) As DataTable
+        Dim dt As New DataTable()
+        Using conn As New SqlConnection(connectionString)
+            conn.Open()
+            Dim cmd As New SqlCommand("SELECT ID, Fecha, Total FROM ventas WHERE IDCliente = @IDCliente", conn)
+            cmd.Parameters.AddWithValue("@IDCliente", idCliente)
+            dt.Load(cmd.ExecuteReader())
+        End Using
+        Return dt
+    End Function
+
+    Public Function VentasConsultarItems(idVenta As Integer) As DataTable
+        Dim dt As New DataTable()
+        Using conn As New SqlConnection(connectionString)
+            conn.Open()
+            Dim cmd As New SqlCommand("SELECT ID, IDProducto, PrecioUnitario, Cantidad, PrecioTotal FROM ventasitems WHERE IDVenta = @IDVenta", conn)
+            cmd.Parameters.AddWithValue("@IDVenta", idVenta)
+            dt.Load(cmd.ExecuteReader())
+        End Using
+        Return dt
+    End Function
+
+    Public Function VentasEliminar(idVenta As Integer) As Integer
+
+        Using conn1 As New SqlConnection(connectionString)
+            Dim cmd As New SqlCommand("DELETE FROM ventasitems WHERE IDVenta = @id", conn1)
+            cmd.Parameters.AddWithValue("@id", idVenta)
+            conn1.Open()
+            cmd.ExecuteNonQuery()
+        End Using
+
+        Using conn2 As New SqlConnection(connectionString)
+            Dim cmd2 As New SqlCommand("DELETE FROM ventas WHERE id = @id", conn2)
+            cmd2.Parameters.AddWithValue("@id", idVenta)
+            conn2.Open()
+            Return cmd2.ExecuteNonQuery()
+        End Using
+    End Function
 End Class

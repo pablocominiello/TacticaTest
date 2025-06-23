@@ -128,6 +128,25 @@ Public Class frmClientesVentas
     End Sub
 
     Private Sub btnVentaIngresar_Click(sender As Object, e As EventArgs) Handles btnVentaIngresar.Click
+        ' Validar que la grilla tenga registros
+        If dataGridVentasItems.Rows.Count = 0 Then
+            MessageBox.Show("Debe agregar al menos un ítem a la venta.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        ' Validar que todas las filas tengan Cantidad > 0
+        For Each row As DataGridViewRow In dataGridVentasItems.Rows
+            ' Ignorar la fila nueva para ingreso rápido si está habilitada
+            If Not row.IsNewRow Then
+                Dim cantidadObj = row.Cells("Cantidad").Value
+                Dim cantidad As Integer
+                If cantidadObj Is Nothing OrElse Not Integer.TryParse(cantidadObj.ToString(), cantidad) OrElse cantidad <= 0 Then
+                    MessageBox.Show("Todas las filas deben tener una cantidad mayor a cero.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    Return
+                End If
+            End If
+        Next
+
         ' Crear la lista de ítems
         Dim items As New List(Of VentasItem.VentaItem)
         For Each row As DataGridViewRow In dataGridVentasItems.Rows
@@ -150,6 +169,8 @@ Public Class frmClientesVentas
         )
 
         MessageBox.Show("Venta grabada correctamente. ID Venta: " & idVenta)
+
+        Me.Close()
     End Sub
 End Class
 

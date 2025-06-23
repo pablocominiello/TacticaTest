@@ -1,15 +1,17 @@
 ﻿Public Class frmClientes
     Private Const PromptClienteliminar As String = "Esta seguro que desea eliminar el cliente ?"
     Private Negocio As New NegocioParametros.Parametros()
+    Private Transacciones As New NegocioTransacciones.Transacciones()
 
     Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
-        Me.Close()
+        Close()
     End Sub
 
     Private Sub btnAgregarCliente_Click(sender As Object, e As EventArgs) Handles btnAgregarCliente.Click
         Dim frmClientesAgregar As New frmClientesAgregar()
         frmClientesAgregar.ShowDialog()
         MostrarClientes()
+
     End Sub
 
     Private Sub frmClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -23,6 +25,7 @@
             txtTelefonoFiltrar.Text,
             txtCorreoFiltrar.Text
         )
+
     End Sub
 
     Private Sub btnClienteModificar_Click(sender As Object, e As EventArgs) Handles btnClienteModificar.Click
@@ -48,12 +51,10 @@
             txtCliente.Text = If(valorCliente IsNot Nothing, valorCliente.ToString(), "")
             txtCorreo.Text = If(valorCorreo IsNot Nothing, valorCorreo.ToString(), "")
             txtTelefono.Text = If(valorTelefono IsNot Nothing, valorTelefono.ToString(), "")
+            VentasClienteConsultar(valorID)
         Else
             lblID.Text = ""
         End If
-    End Sub
-
-    Private Sub DataGridClientes_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridClientes.CellContentClick
 
     End Sub
 
@@ -95,16 +96,53 @@
         MostrarClientes()
     End Sub
 
-    Private Sub btnClienteVentas_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
     Private Sub btnClienteVenta_Click(sender As Object, e As EventArgs) Handles btnClienteVenta.Click
 
         With frmClientesVentas
             .IdClienteSet(Integer.Parse(lblID.Text))
             .ClienteSet(txtCliente.Text)
             .ShowDialog()
+            VentasClienteConsultar(Integer.Parse(lblID.Text))
         End With
+    End Sub
+
+    Private Sub VentasClienteConsultar(intIdClient As Integer)
+
+        If intIdClient > 0 Then
+            DataGridVentas.DataSource = Transacciones.ConsultarVentasPorCliente(intIdClient)
+        Else
+            MessageBox.Show("Seleccione un cliente válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+    End Sub
+
+    Private Sub btnVentaEliminar_Click(sender As Object, e As EventArgs) Handles btnVentaEliminar.Click
+        If DataGridVentas.CurrentRow IsNot Nothing AndAlso DataGridVentas.CurrentRow.Index >= 0 Then
+            Dim idVenta As Integer
+            Dim valorID As Object = DataGridVentas.CurrentRow.Cells(0).Value
+            If valorID IsNot Nothing AndAlso Integer.TryParse(valorID.ToString(), idVenta) Then
+                Dim resultado = MessageBox.Show("¿Está seguro que desea eliminar la venta seleccionada?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                If resultado = DialogResult.Yes Then
+                    Dim transacciones As New NegocioTransacciones.Transacciones()
+                    If transacciones.EliminarVenta(idVenta) Then
+                        MessageBox.Show("Venta eliminada correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        VentasClienteConsultar(CType(lblID.Text, Integer))
+                    Else
+                        MessageBox.Show("No se pudo eliminar la venta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End If
+                End If
+            Else
+                MessageBox.Show("No se pudo obtener el ID de la venta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        Else
+            MessageBox.Show("Seleccione una venta para eliminar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
+    End Sub
+
+    Private Sub DataGridClientes_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridClientes.CellContentClick
+
+    End Sub
+
+    Private Sub Panel4_Paint(sender As Object, e As PaintEventArgs) Handles Panel4.Paint
+
     End Sub
 End Class

@@ -48,22 +48,30 @@ Partial Class frmClientes
         txtClienteFiltrar = New TextBox()
         Label4 = New Label()
         Panel3 = New Panel()
+        Panel4 = New Panel()
+        btnVentaEliminar = New Button()
+        btnVentaModificar = New Button()
+        DataGridVentas = New DataGridView()
+        Label8 = New Label()
         CType(DataGridClientes, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
         CType(ErrorProvider1, ComponentModel.ISupportInitialize).BeginInit()
         Panel2.SuspendLayout()
         Panel3.SuspendLayout()
+        Panel4.SuspendLayout()
+        CType(DataGridVentas, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' DataGridClientes
         ' 
+        DataGridClientes.AllowUserToAddRows = False
         DataGridClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridClientes.Location = New Point(14, 154)
         DataGridClientes.MultiSelect = False
         DataGridClientes.Name = "DataGridClientes"
         DataGridClientes.ReadOnly = True
         DataGridClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        DataGridClientes.Size = New Size(810, 264)
+        DataGridClientes.Size = New Size(641, 264)
         DataGridClientes.TabIndex = 0
         ' 
         ' btnVolver
@@ -214,7 +222,7 @@ Partial Class frmClientes
         ' btnBuscar
         ' 
         btnBuscar.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
-        btnBuscar.Location = New Point(719, 115)
+        btnBuscar.Location = New Point(550, 112)
         btnBuscar.Name = "btnBuscar"
         btnBuscar.Size = New Size(105, 27)
         btnBuscar.TabIndex = 17
@@ -237,7 +245,7 @@ Partial Class frmClientes
         Panel2.ForeColor = Color.Black
         Panel2.Location = New Point(16, 13)
         Panel2.Name = "Panel2"
-        Panel2.Size = New Size(838, 434)
+        Panel2.Size = New Size(670, 434)
         Panel2.TabIndex = 18
         ' 
         ' txtCorreoFiltrar
@@ -246,7 +254,7 @@ Partial Class frmClientes
         txtCorreoFiltrar.Margin = New Padding(3, 2, 3, 2)
         txtCorreoFiltrar.MaxLength = 250
         txtCorreoFiltrar.Name = "txtCorreoFiltrar"
-        txtCorreoFiltrar.Size = New Size(535, 23)
+        txtCorreoFiltrar.Size = New Size(433, 23)
         txtCorreoFiltrar.TabIndex = 24
         ' 
         ' txtTelefonoFiltrar
@@ -255,7 +263,7 @@ Partial Class frmClientes
         txtTelefonoFiltrar.Margin = New Padding(3, 2, 3, 2)
         txtTelefonoFiltrar.MaxLength = 250
         txtTelefonoFiltrar.Name = "txtTelefonoFiltrar"
-        txtTelefonoFiltrar.Size = New Size(535, 23)
+        txtTelefonoFiltrar.Size = New Size(433, 23)
         txtTelefonoFiltrar.TabIndex = 23
         ' 
         ' Label6
@@ -294,7 +302,7 @@ Partial Class frmClientes
         txtClienteFiltrar.Margin = New Padding(3, 2, 3, 2)
         txtClienteFiltrar.MaxLength = 250
         txtClienteFiltrar.Name = "txtClienteFiltrar"
-        txtClienteFiltrar.Size = New Size(535, 23)
+        txtClienteFiltrar.Size = New Size(433, 23)
         txtClienteFiltrar.TabIndex = 19
         ' 
         ' Label4
@@ -317,11 +325,69 @@ Partial Class frmClientes
         Panel3.Size = New Size(162, 219)
         Panel3.TabIndex = 19
         ' 
+        ' Panel4
+        ' 
+        Panel4.BorderStyle = BorderStyle.FixedSingle
+        Panel4.Controls.Add(btnVentaEliminar)
+        Panel4.Controls.Add(btnVentaModificar)
+        Panel4.Controls.Add(DataGridVentas)
+        Panel4.Controls.Add(Label8)
+        Panel4.Location = New Point(696, 13)
+        Panel4.Name = "Panel4"
+        Panel4.Size = New Size(356, 434)
+        Panel4.TabIndex = 20
+        ' 
+        ' btnVentaEliminar
+        ' 
+        btnVentaEliminar.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
+        btnVentaEliminar.Location = New Point(212, 394)
+        btnVentaEliminar.Margin = New Padding(3, 2, 3, 2)
+        btnVentaEliminar.Name = "btnVentaEliminar"
+        btnVentaEliminar.Size = New Size(129, 30)
+        btnVentaEliminar.TabIndex = 22
+        btnVentaEliminar.Text = "Eliminar Venta"
+        btnVentaEliminar.UseVisualStyleBackColor = True
+        ' 
+        ' btnVentaModificar
+        ' 
+        btnVentaModificar.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
+        btnVentaModificar.Location = New Point(13, 394)
+        btnVentaModificar.Margin = New Padding(3, 2, 3, 2)
+        btnVentaModificar.Name = "btnVentaModificar"
+        btnVentaModificar.Size = New Size(129, 30)
+        btnVentaModificar.TabIndex = 21
+        btnVentaModificar.Text = "Consultar Venta"
+        btnVentaModificar.UseVisualStyleBackColor = True
+        ' 
+        ' DataGridVentas
+        ' 
+        DataGridVentas.AllowUserToAddRows = False
+        DataGridVentas.AllowUserToDeleteRows = False
+        DataGridVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridVentas.Location = New Point(14, 42)
+        DataGridVentas.MultiSelect = False
+        DataGridVentas.Name = "DataGridVentas"
+        DataGridVentas.ReadOnly = True
+        DataGridVentas.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        DataGridVentas.Size = New Size(327, 336)
+        DataGridVentas.TabIndex = 20
+        ' 
+        ' Label8
+        ' 
+        Label8.AutoSize = True
+        Label8.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
+        Label8.Location = New Point(8, 18)
+        Label8.Name = "Label8"
+        Label8.Size = New Size(104, 15)
+        Label8.TabIndex = 19
+        Label8.Text = "Ventas Realizadas"
+        ' 
         ' frmClientes
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(869, 689)
+        ClientSize = New Size(1052, 770)
+        Controls.Add(Panel4)
         Controls.Add(Panel3)
         Controls.Add(Panel2)
         Controls.Add(Panel1)
@@ -334,6 +400,9 @@ Partial Class frmClientes
         Panel2.ResumeLayout(False)
         Panel2.PerformLayout()
         Panel3.ResumeLayout(False)
+        Panel4.ResumeLayout(False)
+        Panel4.PerformLayout()
+        CType(DataGridVentas, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
@@ -362,4 +431,9 @@ Partial Class frmClientes
     Friend WithEvents txtCorreoFiltrar As TextBox
     Friend WithEvents Panel3 As Panel
     Friend WithEvents btnClienteVenta As Button
+    Friend WithEvents Panel4 As Panel
+    Friend WithEvents Label8 As Label
+    Friend WithEvents DataGridVentas As DataGridView
+    Friend WithEvents btnVentaModificar As Button
+    Friend WithEvents btnVentaEliminar As Button
 End Class
