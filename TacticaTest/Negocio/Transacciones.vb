@@ -10,13 +10,15 @@ Namespace NegocioTransacciones
         Public Function ConsultarVentasPorCliente(idCliente As Integer) As DataTable
             Return ventas.VentasConsultarCliente(idCliente)
         End Function
-        Public Function ConsultarItemsPorVenta(idVenta As Integer) As DataTable
+        Public Function VentasConsultarItems(idVenta As Integer) As DataTable
             Return ventas.VentasConsultarItems(idVenta)
         End Function
 
         Public Function EliminarVenta(idVenta As Integer) As Boolean
             Return ventas.VentasEliminar(idVenta)
         End Function
-
+        Public Function ModificarVenta(idVenta As Integer, idCliente As Integer, total As Decimal, items As List(Of VentaItem)) As Boolean
+            Return ventas.VentaModificar(idVenta, idCliente, total, items)
+        End Function
     End Class
 End Namespace

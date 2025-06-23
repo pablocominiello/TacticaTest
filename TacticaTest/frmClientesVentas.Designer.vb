@@ -26,6 +26,7 @@ Partial Class frmClientesVentas
         txtCliente = New TextBox()
         lblIDCliente = New Label()
         Panel2 = New Panel()
+        Label3 = New Label()
         btnProductosAgregar = New Button()
         btnBuscar = New Button()
         Label8 = New Label()
@@ -40,24 +41,30 @@ Partial Class frmClientesVentas
         numPrecioMinimo = New NumericUpDown()
         btnVolver = New Button()
         Panel1 = New Panel()
+        btnEliminarProducto = New Button()
         lblTotalVenta = New Label()
         Label2 = New Label()
         dataGridVentasItems = New DataGridView()
         lbltitulo = New Label()
         btnVentaIngresar = New Button()
+        lblVentaID = New Label()
+        Label9 = New Label()
+        Panel3 = New Panel()
+        btnVentaModificar = New Button()
         Panel2.SuspendLayout()
         CType(dataGridProductos, ComponentModel.ISupportInitialize).BeginInit()
         CType(numPrecioMaximo, ComponentModel.ISupportInitialize).BeginInit()
         CType(numPrecioMinimo, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
         CType(dataGridVentasItems, ComponentModel.ISupportInitialize).BeginInit()
+        Panel3.SuspendLayout()
         SuspendLayout()
         ' 
         ' Label5
         ' 
         Label5.AutoSize = True
         Label5.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
-        Label5.Location = New Point(12, 9)
+        Label5.Location = New Point(10, 7)
         Label5.Name = "Label5"
         Label5.Size = New Size(46, 15)
         Label5.TabIndex = 23
@@ -66,7 +73,7 @@ Partial Class frmClientesVentas
         ' txtCliente
         ' 
         txtCliente.BackColor = Color.LightGray
-        txtCliente.Location = New Point(12, 26)
+        txtCliente.Location = New Point(4, 23)
         txtCliente.Margin = New Padding(3, 2, 3, 2)
         txtCliente.MaxLength = 250
         txtCliente.Name = "txtCliente"
@@ -78,7 +85,7 @@ Partial Class frmClientesVentas
         ' 
         lblIDCliente.AutoSize = True
         lblIDCliente.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
-        lblIDCliente.Location = New Point(81, 9)
+        lblIDCliente.Location = New Point(62, 7)
         lblIDCliente.Name = "lblIDCliente"
         lblIDCliente.Size = New Size(20, 15)
         lblIDCliente.TabIndex = 24
@@ -87,6 +94,7 @@ Partial Class frmClientesVentas
         ' Panel2
         ' 
         Panel2.BorderStyle = BorderStyle.FixedSingle
+        Panel2.Controls.Add(Label3)
         Panel2.Controls.Add(btnProductosAgregar)
         Panel2.Controls.Add(btnBuscar)
         Panel2.Controls.Add(Label8)
@@ -101,8 +109,18 @@ Partial Class frmClientesVentas
         Panel2.Controls.Add(numPrecioMinimo)
         Panel2.Location = New Point(12, 69)
         Panel2.Name = "Panel2"
-        Panel2.Size = New Size(789, 403)
+        Panel2.Size = New Size(877, 403)
         Panel2.TabIndex = 26
+        ' 
+        ' Label3
+        ' 
+        Label3.AutoSize = True
+        Label3.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
+        Label3.Location = New Point(10, 137)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(136, 15)
+        Label3.TabIndex = 30
+        Label3.Text = "Seleccion de Productos"
         ' 
         ' btnProductosAgregar
         ' 
@@ -117,7 +135,7 @@ Partial Class frmClientesVentas
         ' btnBuscar
         ' 
         btnBuscar.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
-        btnBuscar.Location = New Point(662, 99)
+        btnBuscar.Location = New Point(747, 99)
         btnBuscar.Name = "btnBuscar"
         btnBuscar.Size = New Size(105, 27)
         btnBuscar.TabIndex = 27
@@ -149,12 +167,12 @@ Partial Class frmClientesVentas
         dataGridProductos.AllowUserToAddRows = False
         dataGridProductos.AllowUserToDeleteRows = False
         dataGridProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dataGridProductos.Location = New Point(10, 143)
+        dataGridProductos.Location = New Point(10, 155)
         dataGridProductos.Name = "dataGridProductos"
         dataGridProductos.ReadOnly = True
         dataGridProductos.RowHeadersWidth = 51
         dataGridProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dataGridProductos.Size = New Size(757, 220)
+        dataGridProductos.Size = New Size(842, 208)
         dataGridProductos.TabIndex = 0
         ' 
         ' numPrecioMaximo
@@ -226,7 +244,7 @@ Partial Class frmClientesVentas
         ' btnVolver
         ' 
         btnVolver.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
-        btnVolver.Location = New Point(895, 706)
+        btnVolver.Location = New Point(895, 686)
         btnVolver.Margin = New Padding(3, 2, 3, 2)
         btnVolver.Name = "btnVolver"
         btnVolver.Size = New Size(129, 30)
@@ -237,13 +255,25 @@ Partial Class frmClientesVentas
         ' Panel1
         ' 
         Panel1.BorderStyle = BorderStyle.FixedSingle
+        Panel1.Controls.Add(btnEliminarProducto)
         Panel1.Controls.Add(lblTotalVenta)
         Panel1.Controls.Add(Label2)
         Panel1.Controls.Add(dataGridVentasItems)
-        Panel1.Location = New Point(18, 535)
+        Panel1.Location = New Point(12, 504)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(871, 212)
+        Panel1.Size = New Size(877, 212)
         Panel1.TabIndex = 28
+        ' 
+        ' btnEliminarProducto
+        ' 
+        btnEliminarProducto.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
+        btnEliminarProducto.Location = New Point(672, 165)
+        btnEliminarProducto.Margin = New Padding(3, 2, 3, 2)
+        btnEliminarProducto.Name = "btnEliminarProducto"
+        btnEliminarProducto.Size = New Size(129, 30)
+        btnEliminarProducto.TabIndex = 31
+        btnEliminarProducto.Text = "Eliminar Producto"
+        btnEliminarProducto.UseVisualStyleBackColor = True
         ' 
         ' lblTotalVenta
         ' 
@@ -270,7 +300,9 @@ Partial Class frmClientesVentas
         dataGridVentasItems.AllowUserToAddRows = False
         dataGridVentasItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         dataGridVentasItems.Location = New Point(14, 14)
+        dataGridVentasItems.MultiSelect = False
         dataGridVentasItems.Name = "dataGridVentasItems"
+        dataGridVentasItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         dataGridVentasItems.Size = New Size(628, 181)
         dataGridVentasItems.TabIndex = 0
         ' 
@@ -278,7 +310,7 @@ Partial Class frmClientesVentas
         ' 
         lbltitulo.AutoSize = True
         lbltitulo.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
-        lbltitulo.Location = New Point(20, 513)
+        lbltitulo.Location = New Point(12, 486)
         lbltitulo.Name = "lbltitulo"
         lbltitulo.Size = New Size(115, 15)
         lbltitulo.TabIndex = 29
@@ -287,7 +319,7 @@ Partial Class frmClientesVentas
         ' btnVentaIngresar
         ' 
         btnVentaIngresar.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
-        btnVentaIngresar.Location = New Point(895, 658)
+        btnVentaIngresar.Location = New Point(895, 640)
         btnVentaIngresar.Margin = New Padding(3, 2, 3, 2)
         btnVentaIngresar.Name = "btnVentaIngresar"
         btnVentaIngresar.Size = New Size(129, 30)
@@ -295,19 +327,62 @@ Partial Class frmClientesVentas
         btnVentaIngresar.Text = "Ingresar Venta"
         btnVentaIngresar.UseVisualStyleBackColor = True
         ' 
+        ' lblVentaID
+        ' 
+        lblVentaID.AutoSize = True
+        lblVentaID.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
+        lblVentaID.Location = New Point(779, 7)
+        lblVentaID.Name = "lblVentaID"
+        lblVentaID.Size = New Size(14, 15)
+        lblVentaID.TabIndex = 32
+        lblVentaID.Text = "0"
+        ' 
+        ' Label9
+        ' 
+        Label9.AutoSize = True
+        Label9.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
+        Label9.Location = New Point(716, 7)
+        Label9.Name = "Label9"
+        Label9.Size = New Size(52, 15)
+        Label9.TabIndex = 31
+        Label9.Text = "VentaID"
+        ' 
+        ' Panel3
+        ' 
+        Panel3.BorderStyle = BorderStyle.FixedSingle
+        Panel3.Controls.Add(txtCliente)
+        Panel3.Controls.Add(lblVentaID)
+        Panel3.Controls.Add(Label5)
+        Panel3.Controls.Add(Label9)
+        Panel3.Controls.Add(lblIDCliente)
+        Panel3.Location = New Point(12, 6)
+        Panel3.Name = "Panel3"
+        Panel3.Size = New Size(916, 57)
+        Panel3.TabIndex = 33
+        ' 
+        ' btnVentaModificar
+        ' 
+        btnVentaModificar.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
+        btnVentaModificar.Location = New Point(895, 589)
+        btnVentaModificar.Margin = New Padding(3, 2, 3, 2)
+        btnVentaModificar.Name = "btnVentaModificar"
+        btnVentaModificar.Size = New Size(129, 30)
+        btnVentaModificar.TabIndex = 34
+        btnVentaModificar.Text = "Modificar Venta"
+        btnVentaModificar.UseVisualStyleBackColor = True
+        ' 
         ' frmClientesVentas
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1064, 747)
+        ClientSize = New Size(1035, 725)
+        Controls.Add(btnVentaModificar)
+        Controls.Add(Panel3)
         Controls.Add(btnVentaIngresar)
         Controls.Add(lbltitulo)
         Controls.Add(Panel1)
         Controls.Add(btnVolver)
         Controls.Add(Panel2)
-        Controls.Add(lblIDCliente)
-        Controls.Add(Label5)
-        Controls.Add(txtCliente)
         Name = "frmClientesVentas"
         Text = "Ventas"
         Panel2.ResumeLayout(False)
@@ -318,6 +393,8 @@ Partial Class frmClientesVentas
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
         CType(dataGridVentasItems, ComponentModel.ISupportInitialize).EndInit()
+        Panel3.ResumeLayout(False)
+        Panel3.PerformLayout()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -345,4 +422,10 @@ Partial Class frmClientesVentas
     Friend WithEvents lblTotalVenta As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents btnVentaIngresar As Button
+    Friend WithEvents lblVentaID As Label
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Panel3 As Panel
+    Friend WithEvents btnVentaModificar As Button
+    Friend WithEvents Label3 As Label
+    Friend WithEvents btnEliminarProducto As Button
 End Class

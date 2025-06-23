@@ -4,7 +4,7 @@
     Private Transacciones As New NegocioTransacciones.Transacciones()
 
     Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
-        Close()
+        Me.Close()
     End Sub
 
     Private Sub btnAgregarCliente_Click(sender As Object, e As EventArgs) Handles btnAgregarCliente.Click
@@ -96,15 +96,6 @@
         MostrarClientes()
     End Sub
 
-    Private Sub btnClienteVenta_Click(sender As Object, e As EventArgs) Handles btnClienteVenta.Click
-
-        With frmClientesVentas
-            .IdClienteSet(Integer.Parse(lblID.Text))
-            .ClienteSet(txtCliente.Text)
-            .ShowDialog()
-            VentasClienteConsultar(Integer.Parse(lblID.Text))
-        End With
-    End Sub
 
     Private Sub VentasClienteConsultar(intIdClient As Integer)
 
@@ -138,11 +129,54 @@
         End If
     End Sub
 
-    Private Sub DataGridClientes_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridClientes.CellContentClick
+    Private Sub btnClienteVenta_Click(sender As Object, e As EventArgs) Handles btnClienteVenta.Click
+        With frmClientesVentas
+            .IdClienteSet(Integer.Parse(lblID.Text))
+            .ClienteSet(txtCliente.Text)
+            .IdVentaSet(0)
+            .ShowDialog()
+            VentasClienteConsultar(Integer.Parse(lblID.Text))
+        End With
 
     End Sub
 
-    Private Sub Panel4_Paint(sender As Object, e As PaintEventArgs) Handles Panel4.Paint
+    Private Sub btnVentaModificar_Click(sender As Object, e As EventArgs) Handles btnVentaModificar.Click
 
+        If DataGridVentas.CurrentRow IsNot Nothing AndAlso DataGridVentas.CurrentRow.Index >= 0 Then
+            Dim IDVenta As Object = DataGridVentas.CurrentRow.Cells(0).Value
+            With frmClientesVentas
+                .IdClienteSet(Integer.Parse(lblID.Text))
+                .ClienteSet(txtCliente.Text)
+                .IdVentaSet(IDVenta)
+                .ShowDialog()
+                VentasClienteConsultar(Integer.Parse(lblID.Text))
+            End With
+        Else
+            MessageBox.Show("Seleccione una venta para modificar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
+    End Sub
+
+    Private Sub LimpiarControles()
+        For Each ctrl As Control In Me.Controls
+            LimpiarControl(ctrl)
+        Next
+    End Sub
+
+    Private Sub LimpiarControl(ctrl As Control)
+        If TypeOf ctrl Is TextBox Then
+            CType(ctrl, TextBox).Clear()
+        ElseIf TypeOf ctrl Is ComboBox Then
+            CType(ctrl, ComboBox).SelectedIndex = -1
+        ElseIf TypeOf ctrl Is DataGridView Then
+            CType(ctrl, DataGridView).Rows.Clear()
+        ElseIf TypeOf ctrl Is CheckBox Then
+            CType(ctrl, CheckBox).Checked = False
+        ElseIf TypeOf ctrl Is RadioButton Then
+            CType(ctrl, RadioButton).Checked = False
+        ElseIf ctrl.HasChildren Then
+            For Each child As Control In ctrl.Controls
+                LimpiarControl(child)
+            Next
+        End If
     End Sub
 End Class
