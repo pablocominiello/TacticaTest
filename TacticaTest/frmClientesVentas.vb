@@ -41,6 +41,8 @@ Public Class frmClientesVentas
         Dim precioMax As Decimal? = If(numPrecioMaximo.Value > 0, numPrecioMaximo.Value, Nothing)
 
         dataGridProductos.DataSource = negocio.ListarProductosFiltrando(nombre, precioMin, precioMax, categoria)
+        dataGridProductos.Columns("Precio").DefaultCellStyle.Format = "C2" ' Formato de moneda
+        dataGridProductos.Columns("Precio").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
     End Sub
 
     Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
@@ -74,7 +76,6 @@ Public Class frmClientesVentas
                 Exit Sub
             End If
         Next
-
         dataGridVentasItems.Rows.Add(productoId, productoNombre, productoPrecio, 0)
     End Sub
 
@@ -160,30 +161,38 @@ Public Class frmClientesVentas
     Private Sub VentasItemsBuscar()
         Dim Transacciones As New NegocioTransacciones.Transacciones()
 
-        'dataGridVentasItems.Rows.Clear()
         dataGridVentasItems.DataSource = Nothing
         dataGridVentasItems.Columns.Clear()
+        dataGridVentasItems.Columns.Add("ID", "ID")
+        dataGridVentasItems.Columns.Add("Nombre", "Nombre")
+        dataGridVentasItems.Columns.Add("Precio", "Precio")
+        dataGridVentasItems.Columns.Add("Cantidad", "Cantidad")
+        dataGridVentasItems.Columns.Add("Total", "Total")
 
         If IDVenta > 0 Then
-            dataGridVentasItems.DataSource = Transacciones.VentasConsultarItems(IDVenta)
+            Dim VentasActuales As DataTable = Transacciones.VentasConsultarItems(IDVenta)
+            For Each row As DataRow In VentasActuales.Rows
+                dataGridVentasItems.Rows.Add(
+                    row("ID"),
+                    row("Nombre"),
+                    row("Precio"),
+                    row("Cantidad"),
+                    row("Total")
+                )
+            Next
             lblVentaID.Text = IDVenta.ToString()
             btnVentaIngresar.Visible = False
             btnVentaModificar.Visible = True
         Else
-            ' Configurar columnas del DataGridView para los productos en la venta
-            dataGridVentasItems.Columns.Clear()
-            dataGridVentasItems.Columns.Add("ID", "ID")
-            dataGridVentasItems.Columns.Add("Nombre", "Nombre")
-            dataGridVentasItems.Columns.Add("Precio", "Precio")
-            dataGridVentasItems.Columns.Add("Cantidad", "Cantidad")
-            dataGridVentasItems.Columns.Add("Total", "Total")
-
             btnVentaIngresar.Visible = True
             btnVentaModificar.Visible = False
+            lblVentaID.Text = "0"
         End If
 
         dataGridVentasItems.Columns("Precio").DefaultCellStyle.Format = "C2" ' Formato de moneda
         dataGridVentasItems.Columns("Total").DefaultCellStyle.Format = "C2" ' Formato de moneda
+        dataGridVentasItems.Columns("Precio").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        dataGridVentasItems.Columns("Total").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
 
         ' Hacer las columnas ID y Nombre solo lectura
         dataGridVentasItems.Columns("ID").ReadOnly = True
@@ -253,7 +262,7 @@ Public Class frmClientesVentas
             items
         )
 
-        MessageBox.Show("Venta grabada correctamente. ID Venta: " & lblVentaID.Text)
+        MessageBox.Show("Venta modificada correctamente. ID Venta: " & lblVentaID.Text)
 
         Me.Close()
 

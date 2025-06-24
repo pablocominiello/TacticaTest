@@ -101,6 +101,8 @@
 
         If intIdClient > 0 Then
             DataGridVentas.DataSource = Transacciones.ConsultarVentasPorCliente(intIdClient)
+            DataGridVentas.Columns("Total").DefaultCellStyle.Format = "C2" ' Formato de moneda
+            DataGridVentas.Columns("Total").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
         Else
             MessageBox.Show("Seleccione un cliente válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If

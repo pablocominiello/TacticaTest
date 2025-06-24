@@ -364,12 +364,12 @@ Partial Class frmClientes
         DataGridVentas.AllowUserToAddRows = False
         DataGridVentas.AllowUserToDeleteRows = False
         DataGridVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridVentas.Location = New Point(14, 42)
+        DataGridVentas.Location = New Point(14, 39)
         DataGridVentas.MultiSelect = False
         DataGridVentas.Name = "DataGridVentas"
         DataGridVentas.ReadOnly = True
         DataGridVentas.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        DataGridVentas.Size = New Size(412, 497)
+        DataGridVentas.Size = New Size(412, 500)
         DataGridVentas.TabIndex = 20
         ' 
         ' Label8

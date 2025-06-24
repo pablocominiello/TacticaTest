@@ -87,7 +87,7 @@ Friend Class Ventas
             cmd.Parameters.AddWithValue("@id", idVenta)
             cmd.Parameters.AddWithValue("@total", total)
             connheader.Open()
-            Return cmd.ExecuteNonQuery()
+            cmd.ExecuteNonQuery()
         End Using
 
 

@@ -16,6 +16,8 @@
     End Sub
     Private Sub ProductosCargar()
         dataGridProductos.DataSource = negocio.ListarProductos()
+        dataGridProductos.Columns("Precio").DefaultCellStyle.Format = "C2" ' Formato de moneda
+        dataGridProductos.Columns("Precio").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
     End Sub
 
     Private Sub dataGridProductos_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dataGridProductos.CellContentClick
@@ -91,5 +93,8 @@
         Dim precioMax As Decimal? = If(numPrecioMaximo.Value > 0, numPrecioMaximo.Value, Nothing)
 
         dataGridProductos.DataSource = negocio.ListarProductosFiltrando(nombre, precioMin, precioMax, categoria)
+
+        dataGridProductos.Columns("Precio").DefaultCellStyle.Format = "C2" ' Formato de moneda
+        dataGridProductos.Columns("Precio").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
     End Sub
 End Class

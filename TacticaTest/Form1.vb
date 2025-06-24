@@ -5,6 +5,10 @@
     End Sub
 
     Private Sub btnClientes_Click(sender As Object, e As EventArgs) Handles btnClientes.Click
+        ClientesMostrar()
+    End Sub
+
+    Private Sub ClientesMostrar()
         Dim frmClientes As New frmClientes()
         frmClientes.Show()
     End Sub
